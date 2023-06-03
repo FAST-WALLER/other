@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plyr Video Player</title>
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.4/plyr.css" />
+  <!-- 注意：你需要使用一个不能被阻止的链接来引用 Plyr CSS 样式 -->
+  <style>
+    /* 这里可以添加自定义 CSS 样式 */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .plyr {
+      margin: 0 auto;
+      max-width: 640px;
+    }
+    #autoplay-message {
+      display: none;
+      text-align: center;
+      background-color: #f5f5f5;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="plyr">
+    <video autoplay muted controls crossorigin playsinline>
+      <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" type="video/mp4">
+      <!-- 如果需要支持其他格式的视频，可以添加对应的 <source> 标签 -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      <!-- <source src="movie.webm" type="video/webm"> -->
+      <!-- fallback for older browsers without Plyr support -->
+      <a href="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4">Download</a>
+    </video>
+  </div>
+
+  <!-- 添加自动播放被禁用时的提示信息 -->
+  <div id="autoplay-message">
+    <p>请点击下方按钮以启动视频播放：</p>
+    <button onclick="playVideo()">播放视频</button>
+  </div>
+
+  <script src="https://cdn.plyr.io/3.6.4/plyr.js"></script>
+  <!-- 注意：你需要使用一个不能被阻止的链接来引用 Plyr JavaScript -->
+  <script>
+    const player = new Plyr('video', {
+      captions: { active: true },
+      // 如果需要添加播放列表，可以在以下位置添加
+      // playlist: {
+      //   urls: [
+      //     {
+      //       src: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4',
+      //       type: 'video/mp4',
+      //       title: 'View From A Blue Moon Trailer'
+      //     },
+      //     {
+      //       src: 'https://cdn.plyr.io/static/demo/Pexels Videos 4780.mp4',
+      //       type: 'video/mp4',
+      //       title: 'Pexels Videos 4780'
+      //     }
+      //   ]
+      // }
+    });
+    
+    // 判断是否能够自动播放
+    if (player.autoplay) {
+      // 播放器对象加载完成后自动播放视频
+      player.on('ready', function() {
+        player.play();
+      });
+    } else {
+      // 显示自动播放被禁用时的提示信息
+      const message = document.getElementById('autoplay-message');
+      message.style.display = 'block';
+    }
+
+    // 手动启动视频播放
+    function playVideo() {
+      const video = document.querySelector('video');
+      video.play();
+      const message = document.getElementById('autoplay-message');
+      message.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
