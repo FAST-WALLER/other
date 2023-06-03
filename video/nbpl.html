@@ -8,23 +8,35 @@
   <style>
     /* 这里可以添加自定义 CSS 样式 */
     body {
+        background-color: aquamarine;
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
     }
     .ct {
-			height: 50%;
-			width: 50%;
-			position: fixed;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			margin: auto;
+        background-color: rgb(166, 153, 235);
+		height: 70%;
+		width: 50%;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		margin: auto;
+        text-align:center;
+        border-radius: 10px;
+        box-shadow: 2px 2px 4px 4px rgb(0, 0, 0);
+        text-shadow: h-shadow v-shadow blur color;
+        font-size: 40px;
+        -webkit-text-stroke: 1px rgb(255, 255, 255);
+        -webkit-text-fill-color: transparent;
     }
+    </style>
+    <style>
     .plyr {
       margin: 0 auto;
       max-width: 640px;
+      border-radius: 10px;
     }
     #autoplay-message {
       display: none;
@@ -38,8 +50,9 @@
 </head>
 <body>
     <div class="ct">
+          你被骗了
   <div class="plyr">
-    <video autoplay muted controls crossorigin playsinline>
+    <video autoplay muted controls crossorigin playsinline loop>
       <source src="https://fast-waller.github.io/resource/MP4/nbpl.mp4" type="video/mp4">
       <!-- 如果需要支持其他格式的视频，可以添加对应的 <source> 标签 -->
       <!-- <source src="movie.ogg" type="video/ogg"> -->
@@ -54,13 +67,13 @@
     <p>请点击下方按钮以启动视频播放：</p>
     <button onclick="playVideo()">播放视频</button>
   </div>
-
+  <div class="gradient"></div>
   <script src="https://cdn.plyr.io/3.6.4/plyr.js"></script>
   <!-- 注意：你需要使用一个不能被阻止的链接来引用 Plyr JavaScript -->
   <script>
-    const player = new Plyr('video', {
-      loop: { "active": true },
-      captions: { active: true },
+    const player = new Plyr('video', { 
+        captions: { active: true },
+     
       // 如果需要添加播放列表，可以在以下位置添加
       // playlist: {
       //   urls: [
@@ -97,6 +110,11 @@
       const message = document.getElementById('autoplay-message');
       message.style.display = 'none';
     }
+
+    // 设置视频循环播放
+    player.on('ended', function() {
+      player.play();
+    });
   </script>
 </body>
 </html>
