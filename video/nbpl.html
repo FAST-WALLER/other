@@ -3,50 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>你被骗了</title>
+  
   <link rel="stylesheet" href="https://cdn.plyr.io/3.6.4/plyr.css" />
-  <!-- 注意：你需要使用一个不能被阻止的链接来引用 Plyr CSS 样式 -->
-  <style>
-    /* 这里可以添加自定义 CSS 样式 */
-    body {
-        background-color: aquamarine;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    .ct {
-        background-color: rgb(166, 153, 235);
-		height: 70%;
-		width: 50%;
-		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		margin: auto;
-        text-align:center;
-        border-radius: 10px;
-        box-shadow: 2px 2px 4px 4px rgb(0, 0, 0);
-        text-shadow: h-shadow v-shadow blur color;
-        font-size: 40px;
-        -webkit-text-stroke: 1px rgb(255, 255, 255);
-        -webkit-text-fill-color: transparent;
-    }
-    </style>
-    <style>
-    .plyr {
-      margin: 0 auto;
-      max-width: 640px;
-      border-radius: 10px;
-    }
-    #autoplay-message {
-      display: none;
-      text-align: center;
-      background-color: #f5f5f5;
-      border: 1px solid #ddd;
-      padding: 10px;
-      margin-top: 10px;
-    }
-  </style>
+  <link href="css\body.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="ct">
@@ -70,51 +29,6 @@
   <div class="gradient"></div>
   <script src="https://cdn.plyr.io/3.6.4/plyr.js"></script>
   <!-- 注意：你需要使用一个不能被阻止的链接来引用 Plyr JavaScript -->
-  <script>
-    const player = new Plyr('video', { 
-        captions: { active: true },
-     
-      // 如果需要添加播放列表，可以在以下位置添加
-      // playlist: {
-      //   urls: [
-      //     {
-      //       src: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4',
-      //       type: 'video/mp4',
-      //       title: 'View From A Blue Moon Trailer'
-      //     },
-      //     {
-      //       src: 'https://cdn.plyr.io/static/demo/Pexels Videos 4780.mp4',
-      //       type: 'video/mp4',
-      //       title: 'Pexels Videos 4780'
-      //     }
-      //   ]
-      // }
-    });
-    
-    // 判断是否能够自动播放
-    if (player.autoplay) {
-      // 播放器对象加载完成后自动播放视频
-      player.on('ready', function() {
-        player.play();
-      });
-    } else {
-      // 显示自动播放被禁用时的提示信息
-      const message = document.getElementById('autoplay-message');
-      message.style.display = 'block';
-    }
-
-    // 手动启动视频播放
-    function playVideo() {
-      const video = document.querySelector('video');
-      video.play();
-      const message = document.getElementById('autoplay-message');
-      message.style.display = 'none';
-    }
-
-    // 设置视频循环播放
-    player.on('ended', function() {
-      player.play();
-    });
-  </script>
+  <script src="js/video.js"></script>
 </body>
 </html>
