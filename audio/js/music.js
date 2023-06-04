@@ -163,7 +163,6 @@ var title2 = `
 PSMSC                                               
 `
 var content = `
-版权所有 © 2023 Phantom-Shadow. All Rights Reserved.
 使用纯js，css，html构建
 使用的是plyr播放器（https://github.com/sampotts/plyr ）
 `
@@ -171,6 +170,7 @@ var content = `
 var info = `
 版 本 号：3.2
 更新日期：2023-06-02
+版权所有 © 2023 Phantom-Shadow. All Rights Reserved.
 `
 console.log(`%c${title1} %c${title2}
 %c${content} %c${info}`, styleTitle1, styleTitle2, styleContent, styleinfo)
