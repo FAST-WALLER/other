@@ -1,5 +1,5 @@
 const player = new Plyr('video', { 
-    captions: { active: true },
+    captions: { active: true, update: true, language: 'auto',  },
 });
 
 // 判断是否能够自动播放
